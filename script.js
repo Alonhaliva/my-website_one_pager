@@ -80,9 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const accessToken = await getAccessToken();
             if (!accessToken) return [];
 
-            // Fetch activities from 1 year ago to now
-            const oneYearAgo = Math.floor(Date.now() / 1000) - 31536000;
-            const response = await fetch(`${ACTIVITIES_URL}?after=${oneYearAgo}&per_page=200`, {
+            // Fetch activities from April 1, 2025
+            // Epoch for 2025-04-01 is 1743465600
+            const april2025Epoch = 1743465600;
+            const response = await fetch(`${ACTIVITIES_URL}?after=${april2025Epoch}&per_page=200`, {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
                 }
@@ -109,17 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear previous generic grid if any (or just overwrite)
         gridContainer.innerHTML = '';
 
-        // 1. Calculate Start Date (52 weeks ago, aligned to Sunday)
-        const today = new Date();
-        const oneYearAgo = new Date();
-        oneYearAgo.setDate(today.getDate() - 364);
+        // Fixed Range: April 1, 2025 to April 1, 2026
+        const startDate = new Date('2025-04-01');
+        const endDate = new Date('2026-04-01'); // 1 year later
 
-        // Align to previous Sunday
-        const dayOfWeek = oneYearAgo.getDay(); // 0 is Sunday
-        const startDate = new Date(oneYearAgo);
-        startDate.setDate(oneYearAgo.getDate() - dayOfWeek);
+        // Calculate days to render
+        // 52 weeks * 7 = 364 days, or just days between dates
+        const totalDays = 371; // 53 weeks to be safe/full year view
 
         // 2. Fetch Data
+        // Need to ensure we get data starting from April 2025
         fetchStravaData().then(activities => {
             // Create a map of date -> activity count/intensity
             const activityMap = {};
@@ -127,21 +127,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 // start_date_local: "2024-05-21T10:00:00Z"
                 const dateKey = act.start_date_local.split('T')[0];
                 if (!activityMap[dateKey]) activityMap[dateKey] = 0;
-                activityMap[dateKey]++; // Count activities per day
-                // Could also sum distance/time for intensity
+                activityMap[dateKey]++;
             });
 
             // 3. Render Grid
-            const totalDays = 53 * 7; // Slightly more than a year to fill grid
+            const today = new Date(); // To know where "future" starts if we want to visually distinguish, or just render empty
 
             for (let i = 0; i < totalDays; i++) {
                 const currentDate = new Date(startDate);
                 currentDate.setDate(startDate.getDate() + i);
-
-                // Stop if we go past today? Optional, GitHub shows future as empty.
-                if (currentDate > today) {
-                    // Render empty or stop? GitHub renders full rows.
-                }
 
                 const dateKey = getDayKey(currentDate);
                 const count = activityMap[dateKey] || 0;
@@ -151,16 +145,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Assign level based on count
                 if (count > 0) {
-                    // Simple logic: 1 activity = level 2, 2+ = level 3/4
                     let level = 1;
                     if (count >= 1) level = 2;
                     if (count >= 2) level = 3;
                     if (count >= 3) level = 4; // high activity
-
                     cell.classList.add(`level-${level}`);
                     cell.title = `${count} activities on ${dateKey}`;
                 } else {
                     cell.title = `No activity on ${dateKey}`;
+                }
+
+                // Optional: visual marker for today? 
+                if (getDayKey(currentDate) === getDayKey(today)) {
+                    cell.style.border = '1px solid #000'; // minimalist marker
                 }
 
                 gridContainer.appendChild(cell);
