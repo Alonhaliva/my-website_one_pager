@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alon Haliva - Customer Success Manager</title>
+    <meta name="description" content="Strategic Customer Success Manager with 6+ years of experience.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main class="container">
+        <header class="hero fade-in">
+            <!-- Profile image -->
+            <div class="profile-frame">
+                <img src="profile_cropped.png" alt="Alon Haliva" class="profile-img">
+            </div>
+
+            <h1 class="header-name"><span>alon</span>haliva</h1>
+
+            <p class="header-bio">
+                Strategic Customer Success Manager with over 6 years of impact across Gaming, Hospitality, Fintech, & AI
+                Consulting.
+            </p>
+
+            <p class="header-current">
+                currently: Client Partner Manager <a href="https://unity.com" target="_blank">@Unity</a>, Solution
+                Consultant <a href="https://duve.com" target="_blank">@Duve</a>
+            </p>
+
+            <nav class="social-links">
+                <a href="https://www.linkedin.com/in/alon-haliva" target="_blank">linkedin 🤝</a>
+                <span class="separator">|</span>
+                <a
+                    href="mailto:alonhaliva@gmail.com?subject=Request%20for%20Resume&body=Hi%20Alon%2C%0D%0A%0D%0AI%20would%20like%20to%20receive%20a%20copy%20of%20your%20resume.%0D%0A%0D%0AThanks%2C%0D%0A%3Cn%3E%0D%0A%3CPhone%3E%0D%0A%3CEmail%3E">cv
+                    📝</a>
+                <span class="separator">|</span>
+                <a href="#" id="openContact">contact ✉️</a>
+            </nav>
+        </header>
+
+        <!-- Experience Section Removed -->
+
+        <!-- Strava Section -->
+        <section class="strava-section fade-in delay-2">
+            <h3 class="strava-title">(strava)</h3>
+            <div class="strava-card">
+                <div class="strava-months">
+                    <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+                    <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+                </div>
+                <div class="strava-body">
+                    <div class="strava-days">
+                        <span>Sun</span><span>Tue</span><span>Thu</span><span>Sat</span>
+                    </div>
+                    <div class="strava-grid" id="stravaGrid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Overlay -->
+        <div id="contactOverlay" class="contact-overlay">
+            <button class="close-btn" id="closeContact">&times;</button>
+            <div class="overlay-content">
+                <div class="contact-header">
+                    <h2>alonhaliva</h2>
+                    <a href="mailto:alonhaliva@gmail.com" class="contact-email">alonhaliva@gmail.com ✉️</a>
+                    <p class="contact-location">Bay Area, California 📍</p>
+                </div>
+
+                <form class="minimal-form" action="#" method="POST">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="name">MY NAME IS</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">MY E-MAIL IS</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="phone">MY NUMBER IS</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="message">I'D LIKE TO CHAT ABOUT</label>
+                        <textarea id="message" name="message" rows="1"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn"
+                        onclick="event.preventDefault(); alert('Message sent! (Demo)');">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+
+        <footer class="fade-in delay-3">
+            <p>&copy; 2026 Alon Haliva</p>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

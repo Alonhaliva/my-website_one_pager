@@ -1,0 +1,469 @@
+:root {
+    --bg-color: #ffffff;
+    --text-primary: #1d1d1f;
+    --text-secondary: #86868b;
+    --accent-color: #2997ff;
+    /* Apple-like blue or similar for links */
+    --font-heading: 'Inter', sans-serif;
+    /* Using Inter for clean look */
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-size: 18px;
+    /* Slightly larger base size */
+}
+
+.container {
+    max-width: 800px;
+    /* Slightly wider */
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    text-align: center;
+    /* Center everything by default for this style */
+}
+
+/* Header Specifics */
+.header-name {
+    font-family: var(--font-heading);
+    font-weight: 200;
+    /* Thin */
+    font-size: 3.5rem;
+    letter-spacing: -0.05em;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.header-name span {
+    font-weight: 400;
+    /* Regular weight for first part if mixed, or vise versa. reahmiyara style often mixes weights */
+}
+
+.header-bio {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #333;
+    max-width: 650px;
+    margin: 0 auto 1rem;
+    line-height: 1.4;
+}
+
+.header-current {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.header-current a {
+    color: #0071e3;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.header-current a:hover {
+    text-decoration: underline;
+}
+
+.profile-frame {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f5f5f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
+}
+
+.profile-placeholder {
+    font-size: 2.5rem;
+    color: #d2d2d7;
+    font-weight: 300;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Social Links - now distinctive like the example */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    /* Wider gap */
+    margin: 3rem 0;
+    /* Significant spacing */
+    padding: 2rem 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.social-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s;
+    font-weight: 400;
+}
+
+.social-links a:hover {
+    color: #000;
+}
+
+.separator {
+    display: none;
+    /* Hide separators, use gap instead for cleaner look */
+}
+
+/* Experience Section - Minimalist */
+.experience h3 {
+    font-weight: 300;
+    font-size: 2rem;
+    /* Larger, thinner heading */
+    margin-bottom: 2rem;
+    color: #000;
+    margin-top: 4rem;
+}
+
+.job-item {
+    text-align: left;
+    /* Keep jobs left aligned or centered? Simplified list usually left aligned. */
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #fafafa;
+}
+
+.job-item:last-child {
+    border-bottom: none;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.25rem;
+}
+
+.company {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #000;
+}
+
+.role {
+    font-weight: 400;
+    color: #333;
+    display: block;
+    margin-top: 0.2rem;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #999;
+    font-variant-numeric: tabular-nums;
+}
+
+.job-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.2rem;
+    font-style: italic;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Contact Form Section */
+.contact-form-section {
+    margin-top: 6rem;
+    padding-top: 4rem;
+    border-top: 1px solid #fafafa;
+    text-align: center;
+}
+
+.contact-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.contact-email {
+    color: #6da7d6; /* Light blue like reference */
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-location {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 4rem;
+}
+
+/* Form Styles */
+.minimal-form {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+}
+
+.input-group {
+    flex: 1;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc; /* Thinner border */
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    outline: none;
+    background: transparent;
+    transition: border-color 0.3s;
+    border-radius: 0; /* Removing default border radius */
+}
+
+.input-group textarea {
+    resize: none;
+    min-height: 40px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-bottom-color: #000;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 2.5rem;
+}
+
+.submit-btn {
+    display: block;
+    margin: 4rem auto 0;
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #333;
+}
+
+.submit-btn:hover {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+/* Contact Overlay */
+.contact-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.contact-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.overlay-content {
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    animation: fadeInScale 0.4s ease forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 2rem;
+    left: 2rem; /* Left side usually for this vibe, user screenshot has X on top left */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    font-weight: 300;
+    color: #333;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+/* Strava Section */
+.strava-section {
+    margin-bottom: 6rem;
+    text-align: center;
+}
+
+.strava-title {
+    font-family: var(--font-heading);
+    color: #fc4c02; /* Strava orange */
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.strava-card {
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px; /* Slightly rounded */
+    padding: 2rem;
+    display: inline-block;
+    background: #fff;
+    max-width: 100%;
+    overflow-x: auto; /* Handle overflow if needed */
+}
+
+.strava-months {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem; /* Offset for days labels */
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 0.8rem;
+    font-weight: 300;
+    min-width: 600px; /* Ensure structure holds */
+}
+
+.strava-body {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.strava-days {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #999;
+    font-size: 0.7rem;
+    padding-top: 0.2rem; /* Align with first row */
+    height: 90px; /* Approximate height of grid */
+    font-weight: 300;
+}
+
+.strava-grid {
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);
+    grid-auto-flow: column; /* Fill columns first (weeks) */
+    gap: 3px;
+    height: 90px;
+}
+
+.strava-cell {
+    width: 10px;
+    height: 10px;
+    background-color: #ebedf0; /* Empty color */
+    border-radius: 2px;
+}
+
+.strava-cell.level-1 { background-color: #9be9a8; }
+.strava-cell.level-2 { background-color: #40c463; }
+.strava-cell.level-3 { background-color: #30a14e; }
+.strava-cell.level-4 { background-color: #216e39; }
+
+/* Custom Strava colors from image if preferred? Image shows gray/orange squares? */
+/* The image provided shows standard GitHub colors or similar. Let's use generic heatmap greens or the "Strava orange" spectrum if desired. 
+   User said "strava" title is orange. The grid in the image looks gray-ish with some colored cells. 
+   I will use a nice orange spectrum for the active cells to match the brand. */
+
+.strava-cell.level-1 { background-color: #ffcea8; } /* Light orange */
+.strava-cell.level-2 { background-color: #ff9b5e; }
+.strava-cell.level-3 { background-color: #fc4c02; } /* Strava Brand */
+.strava-cell.level-4 { background-color: #c93c02; }
+
