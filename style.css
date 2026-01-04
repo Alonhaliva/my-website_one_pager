@@ -215,6 +215,7 @@ body {
         transform: translateY(0);
     }
 }
+
 /* Contact Form Section */
 .contact-form-section {
     margin-top: 6rem;
@@ -232,7 +233,8 @@ body {
 }
 
 .contact-email {
-    color: #6da7d6; /* Light blue like reference */
+    color: #6da7d6;
+    /* Light blue like reference */
     text-decoration: none;
     font-size: 1rem;
     display: block;
@@ -276,14 +278,16 @@ body {
 .input-group textarea {
     width: 100%;
     border: none;
-    border-bottom: 1px solid #ccc; /* Thinner border */
+    border-bottom: 1px solid #ccc;
+    /* Thinner border */
     padding: 0.5rem 0;
     font-size: 1rem;
     font-family: var(--font-body);
     outline: none;
     background: transparent;
     transition: border-color 0.3s;
-    border-radius: 0; /* Removing default border radius */
+    border-radius: 0;
+    /* Removing default border radius */
 }
 
 .input-group textarea {
@@ -363,6 +367,7 @@ body {
         opacity: 0;
         transform: scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -372,7 +377,8 @@ body {
 .close-btn {
     position: absolute;
     top: 2rem;
-    left: 2rem; /* Left side usually for this vibe, user screenshot has X on top left */
+    left: 2rem;
+    /* Left side usually for this vibe, user screenshot has X on top left */
     background: none;
     border: none;
     font-size: 2rem;
@@ -393,7 +399,8 @@ body {
 
 .strava-title {
     font-family: var(--font-heading);
-    color: #fc4c02; /* Strava orange */
+    color: #fc4c02;
+    /* Strava orange */
     font-weight: 300;
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
@@ -401,24 +408,23 @@ body {
 }
 
 .strava-card {
-    border: 1px solid #e0e0e0; /* Light gray border */
-    border-radius: 8px; /* Slightly rounded */
+    border: 1px solid #e0e0e0;
+    /* Light gray border */
+    border-radius: 8px;
+    /* Slightly rounded */
     padding: 2rem;
     display: inline-block;
     background: #fff;
     max-width: 100%;
-    overflow-x: auto; /* Handle overflow if needed */
+    overflow-x: auto;
+    /* Handle overflow if needed */
 }
 
 .strava-months {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 2rem; /* Offset for days labels */
+    position: relative;
+    height: 20px;
     margin-bottom: 0.5rem;
-    color: #666;
-    font-size: 0.8rem;
-    font-weight: 300;
-    min-width: 600px; /* Ensure structure holds */
+    color: #999;
 }
 
 .strava-body {
@@ -432,15 +438,18 @@ body {
     justify-content: space-between;
     color: #999;
     font-size: 0.7rem;
-    padding-top: 0.2rem; /* Align with first row */
-    height: 90px; /* Approximate height of grid */
+    padding-top: 0.2rem;
+    /* Align with first row */
+    height: 90px;
+    /* Approximate height of grid */
     font-weight: 300;
 }
 
 .strava-grid {
     display: grid;
     grid-template-rows: repeat(7, 1fr);
-    grid-auto-flow: column; /* Fill columns first (weeks) */
+    grid-auto-flow: column;
+    /* Fill columns first (weeks) */
     gap: 3px;
     height: 90px;
 }
@@ -448,30 +457,56 @@ body {
 .strava-cell {
     width: 10px;
     height: 10px;
-    background-color: #ebedf0; /* Empty color */
+    background-color: #ebedf0;
+    /* Empty color */
     border-radius: 2px;
 }
 
-.strava-cell.level-1 { background-color: #9be9a8; }
-.strava-cell.level-2 { background-color: #40c463; }
-.strava-cell.level-3 { background-color: #30a14e; }
-.strava-cell.level-4 { background-color: #216e39; }
+.strava-cell.level-1 {
+    background-color: #9be9a8;
+}
+
+.strava-cell.level-2 {
+    background-color: #40c463;
+}
+
+.strava-cell.level-3 {
+    background-color: #30a14e;
+}
+
+.strava-cell.level-4 {
+    background-color: #216e39;
+}
 
 /* Custom Strava colors from image if preferred? Image shows gray/orange squares? */
 /* The image provided shows standard GitHub colors or similar. Let's use generic heatmap greens or the "Strava orange" spectrum if desired. 
    User said "strava" title is orange. The grid in the image looks gray-ish with some colored cells. 
    I will use a nice orange spectrum for the active cells to match the brand. */
 
-.strava-cell.level-1 { background-color: #ffcea8; } /* Light orange */
-.strava-cell.level-2 { background-color: #ff9b5e; }
-.strava-cell.level-3 { background-color: #fc4c02; } /* Strava Brand */
-.strava-cell.level-4 { background-color: #c93c02; }
+.strava-cell.level-1 {
+    background-color: #ffcea8;
+}
+
+/* Light orange */
+.strava-cell.level-2 {
+    background-color: #ff9b5e;
+}
+
+.strava-cell.level-3 {
+    background-color: #fc4c02;
+}
+
+/* Strava Brand */
+.strava-cell.level-4 {
+    background-color: #c93c02;
+}
 
 
 /* Strava Link Styling */
 .strava-link {
     text-decoration: none;
-    color: inherit; /* Inherit the orange color from h3 */
+    color: inherit;
+    /* Inherit the orange color from h3 */
     transition: opacity 0.2s;
 }
 

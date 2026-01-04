@@ -146,12 +146,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 activityMap[dateKey]++;
             });
 
-            // 3. Render Grid
-            const today = new Date(); // To know where "future" starts if we want to visually distinguish, or just render empty
+            // 3. Render Grid & Labels
+            const monthsContainer = document.querySelector('.strava-months');
+            if (monthsContainer) monthsContainer.innerHTML = '';
+            monthsContainer.style.position = 'relative';
+            monthsContainer.style.height = '20px'; // Ensure space for absolute labels
+
+            let currentWeekIndex = 0;
+            let lastMonth = -1;
 
             for (let i = 0; i < totalDays; i++) {
                 const currentDate = new Date(startDate);
                 currentDate.setDate(startDate.getDate() + i);
+
+                // --- Month Label Logic ---
+                // Check if this day is a Sunday (start of a grid column)
+                if (currentDate.getDay() === 0) {
+                    const month = currentDate.getMonth();
+                    // If it's a new month (or the very first column), add label
+                    if (month !== lastMonth) {
+                        const monthName = currentDate.toLocaleString('default', { month: 'short' });
+
+                        // Create label
+                        const label = document.createElement('span');
+                        label.innerText = monthName;
+                        label.style.position = 'absolute';
+                        // Column width is 10px cell + 3px gap = 13px
+                        label.style.left = `${currentWeekIndex * 13}px`;
+                        label.style.fontSize = '0.75rem';
+                        label.style.color = '#999';
+
+                        monthsContainer.appendChild(label);
+                        lastMonth = month;
+                    }
+                    currentWeekIndex++;
+                }
+                // -------------------------
 
                 const dateKey = getDayKey(currentDate);
                 const count = activityMap[dateKey] || 0;
@@ -172,7 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Optional: visual marker for today? 
-                if (getDayKey(currentDate) === getDayKey(today)) {
+                const todayKey = getDayKey(new Date());
+                if (dateKey === todayKey) {
                     cell.style.border = '1px solid #000'; // minimalist marker
                 }
 
