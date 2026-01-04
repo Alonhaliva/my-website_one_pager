@@ -134,6 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. Fetch Data
         // Need to ensure we get data starting from April 2025
         fetchStravaData().then(activities => {
+            const debugEl = document.getElementById('stravaDebug');
+            if (debugEl) {
+                debugEl.innerText = `Debug: Fetched ${activities.length} activities.`;
+                if (activities.length > 0) {
+                    const last = activities[activities.length - 1].start_date_local;
+                    const first = activities[0].start_date_local;
+                    debugEl.innerText += ` Range: ${last} to ${first}`;
+                }
+            }
+
             // Create a map of date -> activity count/intensity
             const activityMap = {};
             activities.forEach(act => {
