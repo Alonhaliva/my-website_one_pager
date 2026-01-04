@@ -124,12 +124,15 @@ document.addEventListener('DOMContentLoaded', () => {
         gridContainer.innerHTML = '';
 
         // Fixed Range: April 1, 2025 to April 1, 2026
-        const startDate = new Date('2025-04-01');
-        const endDate = new Date('2026-04-01'); // 1 year later
+        // But grid MUST start on Sunday to align rows correctly (Row 1 = Sun, Row 2 = Mon...)
+        const fixedStart = new Date('2025-04-01');
+        const dayDiff = fixedStart.getDay(); // 0=Sun, 1=Mon, 2=Tue...
+        const startDate = new Date(fixedStart);
+        startDate.setDate(fixedStart.getDate() - dayDiff); // Backtrack to Sunday
 
         // Calculate days to render
-        // 52 weeks * 7 = 364 days, or just days between dates
-        const totalDays = 371; // 53 weeks to be safe/full year view
+        // 53 weeks * 7 = 371 days covering the range
+        const totalDays = 371;
 
         // 2. Fetch Data
         // Need to ensure we get data starting from April 2025
