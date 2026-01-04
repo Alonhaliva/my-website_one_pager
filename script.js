@@ -175,7 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         label.innerText = monthName;
                         label.style.position = 'absolute';
                         // Column width is 10px cell + 3px gap = 13px
-                        label.style.left = `${currentWeekIndex * 13}px`;
+                        // Plus 30px offset for the days column
+                        label.style.left = `${currentWeekIndex * 13 + 30}px`;
                         label.style.fontSize = '0.75rem';
                         label.style.color = '#999';
 

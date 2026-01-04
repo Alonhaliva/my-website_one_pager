@@ -443,6 +443,9 @@ body {
     height: 90px;
     /* Approximate height of grid */
     font-weight: 300;
+    width: 30px;
+    /* Fixed width for alignment */
+    flex-shrink: 0;
 }
 
 .strava-grid {
