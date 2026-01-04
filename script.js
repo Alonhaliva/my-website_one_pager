@@ -81,20 +81,33 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!accessToken) return [];
 
             // Fetch activities from April 1, 2025
-            // Epoch for 2025-04-01 is 1743465600
             const april2025Epoch = 1743465600;
-            const response = await fetch(`${ACTIVITIES_URL}?after=${april2025Epoch}&per_page=200`, {
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`
-                }
-            });
+            let allActivities = [];
+            let page = 1;
+            const perPage = 200;
 
-            if (!response.ok) {
-                console.warn('Strava fetch failed', response.status);
-                return [];
+            while (true) {
+                const response = await fetch(`${ACTIVITIES_URL}?after=${april2025Epoch}&per_page=${perPage}&page=${page}`, {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                });
+
+                if (!response.ok) {
+                    console.warn('Strava fetch failed', response.status);
+                    break;
+                }
+
+                const activities = await response.json();
+                if (activities.length === 0) break; // No more data
+
+                allActivities = allActivities.concat(activities);
+
+                if (activities.length < perPage) break; // Last page
+                page++;
             }
-            const activities = await response.json();
-            return activities;
+
+            return allActivities;
         } catch (error) {
             console.error("Error fetching Strava data:", error);
             return [];
